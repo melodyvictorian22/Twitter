@@ -44,8 +44,6 @@
         </style>
     </head>
     <body class="bg-light">
-
-        <div>
             <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button"
                 style="height:80px;background-color:#37434d;color:#ffffff;">
                 <div class="container-fluid"><a class="navbar-brand" href="index.html"><i
@@ -66,7 +64,6 @@
                     </div>
                 </div>
             </nav>
-        </div>
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-4">
@@ -75,42 +72,25 @@
                         <div class="card-body text-center">
                             <p><a href="#">My Profile</a></p>
                             <img class="img img-responsive rounded-circle mb-3" width="160" src="img/default.svg ?>" />
-                            
-                            <h3>
                                 <?php
-                                    echo "$cl_collection->NamaPengguna";
+                                  require 'config.php';
+                                  $username = ($_SESSION['NamaPengguna']);
+                                  echo "<h1>$username</h1>";
                                 ?>
-                            </h3>
-                            <p><?php echo "$cl_collection->Email"; ?></p>
-
-                            <p><a href="logout.php">Logout</a></p>
-                        </div>
-                        <div class="card-body text-center">
-                            <p><a href="#">Interests</a></p>
-                            <p>
-                                <span class="label label-default">News</span>
-                                <span class="label label-primary">W3Schools</span>
-                                <span class="label label-success">Labels</span>
-                                <span class="label label-info">Football</span>
-                                <span class="label label-warning">Gaming</span>
-                                <span class="label label-danger">Friends</span>
-                            </p>
                         </div>
                     </div>
-
-                    
                 </div>
 
 
                 <div class="col-md-8">
                     <main>
                         <header>
-                            <form class="compose">
-                                <textarea placeholder="Compose new Tweet..."></textarea>
+                            <form class="compose" method="POST">
+                                <textarea name="tweet" placeholder="Compose new Tweet..."></textarea>
                 
                                 <div>
                                     <span class="count">140</span>
-                                    <button>Send</button>
+                                    <button name ="send">Send</button>
                                 </div>
                             </form>
                         </header>

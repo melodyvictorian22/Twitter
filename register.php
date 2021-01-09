@@ -37,7 +37,7 @@
         // jika query simpan berhasil, maka user sudah terdaftar
         // maka alihkan ke halaman login
         $_SESSION['success'] = "Selamat telah bergabung bersama kami!";
-        header("Location: index.php");
+        header("Location: timeline.php");
     }
 ?>
 
