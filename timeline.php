@@ -1,5 +1,15 @@
 <?php session_start();
-    require 'auth.php';?>
+    require 'auth.php';
+    if(isset($_POST['send'])){
+        require_once("config.php");
+        
+        // filter data yang diinputkan
+        $insertOneResult = $cl_tweet->insertOne([
+            'Tweet' => $_POST['tweet']
+        ]);
+        header("Location: timeline.php");
+    }
+    ?>
 
 
 <!DOCTYPE html>
@@ -75,7 +85,9 @@
                                 <?php
                                   require 'config.php';
                                   $username = ($_SESSION['NamaPengguna']);
-                                  echo "<h1>$username</h1>";
+                                  $qry = array('NamaPengguna' => $username);
+                                  $orang = $collection1->findOne($qry);
+                                  echo "<h1>$orang->NamaPengguna</h1>";
                                 ?>
                         </div>
                     </div>
@@ -83,43 +95,17 @@
 
 
                 <div class="col-md-8">
-                    <main>
-                        <header>
-                            <form class="compose" method="POST">
-                                <textarea name="tweet" placeholder="Compose new Tweet..."></textarea>
-                
-                                <div>
-                                    <span class="count">140</span>
-                                    <button name ="send">Send</button>
+                    <div class = "card">
+                        <div class="card-body">
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <label for="tweet">Tweet :</label>
+                                    <input type="text" name="tweet" class="form-control" placeholder="compose new tweet...">
                                 </div>
+                                <input type="submit" class="btn btn-primary" value="Send" name="send">
                             </form>
-                        </header>
-
-                        <div class="tweets">
-                            <div class="thread">
-                                <div class="tweet">
-                                    <img src="img/rockit.png">
-
-                                    <div class="body">
-                                        <div class="title">@ROCKIT_BOOTCAMP</div>
-                                        <div class="message">tweet tweet!!</div>
-                                    </div>
-                                </div>
-
-                                <div class="replies">
-                                    <form class="compose">
-                                        <textarea placeholder="Compose new Tweet..."></textarea>
-
-                                        <div>
-                                            <span class="count">140</span>
-                                            <button>Send</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
-                    </main>
-
+                    </div>
                     
                     <!-- <form action="" method="post" >
                         <div class="form-group">
@@ -141,7 +127,7 @@
         </div>
 
 
-    <!-- Handlebars Templates -->
+    <!-- Handlebars Templates
     <script id="template-tweet" type="text/x-handlebars-template">
         <div class="tweet">
             <img src="images/{{ img }}">
@@ -175,6 +161,6 @@
 
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script> -->
     </body>
 </html>
