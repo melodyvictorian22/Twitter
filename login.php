@@ -1,27 +1,32 @@
 <?php session_start();
-    require 'config.php';
-        
+    require_once("config.php");
+    
     if(isset($_POST['login'])){
 
          if(isset($_POST['NamaPengguna']) && isset($_POST['Password'])){
-            $username = ($_POST['NamaPengguna']);
-            $password = ($_POST['Password']);
-            // $pass_hash = md5($password);
+            $username = $_POST['NamaPengguna'];
+            $password = $_POST['Password'];
             if(empty($username)){
-                die("Empty or invalid username or email address");
+                die("Empty or invalid username");
             }
             if(empty($password)){
                 die("Enter your password");
             }
-            // Select Database
+
+            
+            $_SESSION["AkunLogin"] =  $username;
+            
             if($collection1){
-                // Select Collection
                 $qry = array("NamaPengguna" => $username, "Password" => $password);
                 $result = $collection1->findOne($qry);
+                
+                $test = json_encode($result);
+                $_SESSION["result"] = $test;
         
                 if(!empty($result)){
                     echo "You are successfully loggedIn";
-                    $_SESSION['suksesLogin'] = "Selamat datang di Twitter!";
+                    
+                    // $_SESSION["AkunLogin"] =  $result;
                     header("Location: timeline.php");
                 }else{
                     echo "Wrong combination of username and password";
@@ -78,8 +83,8 @@
                 <form action="" method="POST">
 
                     <div class="form-group">
-                        <label for="NamaPengguna"><strong>Username</strong></label>
-                        <input class="form-control" type="text" name="NamaPengguna" placeholder="Username atau email" />
+                        <label for="NamaPengguna"><strong>Nama Pengguna</strong></label>
+                        <input class="form-control" type="text" name="NamaPengguna" placeholder="Nama Pengguna" />
                     </div>
 
 

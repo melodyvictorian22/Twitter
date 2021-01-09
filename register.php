@@ -1,4 +1,5 @@
 <?php session_start();
+    
     if(isset($_POST['register'])){
         require_once("config.php");
         
@@ -9,15 +10,6 @@
             'Password' => $_POST['Password'],
             'NamaPengguna' => $_POST['NamaPengguna'],
         ]);
-
-        require 'config.php';
-		$cl_account = $collection1->find();
-		foreach ($cl_account as $acc) {
-            echo $acc->Nama;
-			echo $acc->Email;
-			echo $acc->Password;
-			echo $acc->NamaPengguna;
-		}
         // // menyiapkan query
         // $sql = "INSERT INTO users (name, username, email, password) 
         //         VALUES (:name, :username, :email, :password)";
@@ -85,22 +77,22 @@
                 
                 <div class="form-group">
                     <label for="name"><strong>Nama Lengkap</strong></label>
-                    <input class="form-control" type="text" name="Nama" placeholder="Nama kamu" />
+                    <input class="form-control" type="text" name="Nama" required="" placeholder="Nama kamu" />
                 </div>
 
                 <div class="form-group">
                     <label for="email"><strong>Email</strong></label>
-                    <input class="form-control" type="email" name="Email" placeholder="Alamat Email" />
+                    <input class="form-control" type="email" name="Email" required="" placeholder="Alamat Email" />
                 </div>
 
                 <div class="form-group">
                     <label for="password"><strong>Password</strong></label>
-                    <input class="form-control" type="password" name="Password" placeholder="Password" />
+                    <input class="form-control" type="password" name="Password" required="" placeholder="Password" />
                 </div>
 
                 <div class="form-group">
                     <label for="username"><strong>Nama Pengguna</strong></label>
-                    <input class="form-control" type="text" name="NamaPengguna" placeholder="Username" />
+                    <input class="form-control" type="text" name="NamaPengguna" required="" placeholder="Username" />
                 </div>
 
                 <input type="submit" class="btn btn-success btn-block" name="register" value="Daftar" />

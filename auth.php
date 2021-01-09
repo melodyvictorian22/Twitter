@@ -1,7 +1,8 @@
 <?php
     require 'config.php';
+    
 
-    if(!isset($_SESSION["suksesLogin"]) ){
+    if(!isset($_SESSION["AkunLogin"]) ){
         header("Location: login.php");
     }
 ?>
