@@ -16,10 +16,11 @@
             // Select Database
             if($collection1){
                 // Select Collection
-                $qry = array("NamaPengguna" => $username, "Password" => $password);
+                $qry = array('NamaPengguna' => $username, 'Password' => $password);
                 $result = $collection1->findOne($qry);
         
                 if(!empty($result)){
+
                     echo "You are successfully loggedIn";
                     $_SESSION['suksesLogin'] = "Selamat datang di Twitter!";
                     header("Location: timeline.php");
