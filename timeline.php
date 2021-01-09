@@ -64,7 +64,7 @@
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item"><a class="nav-link" style="color: #ffffff;" href="index.html"><i
                                         class="fa fa-home"></i>&nbsp;Home</a></li>
-                            <li class="nav-item"><a class="nav-link" style="color: #ffffff;" href="#"><i
+                            <li class="nav-item"><a class="nav-link" style="color: #ffffff;" href="search.php"><i
                                         class="fa fa-search"></i>&nbsp;Search</a></li>
                             <li class="nav-item"><a class="nav-link" style="color:#ffffff;" href="profile.html"><i
                                         class="fa fa-user-circle-o"></i>&nbsp;Profile</a></li>
@@ -87,7 +87,9 @@
                                   $username = ($_SESSION['NamaPengguna']);
                                   $qry = array('NamaPengguna' => $username);
                                   $orang = $collection1->findOne($qry);
-                                  echo "<h1>$orang->NamaPengguna</h1>";
+                                  foreach($orang as $users){
+                                    echo "<h1>$users->NamaPengguna</h1>";
+                                  }
                                 ?>
                         </div>
                     </div>
@@ -106,7 +108,18 @@
                             </form>
                         </div>
                     </div>
-                    
+                    <br><br>
+                    <div class="card">
+                        <div class="card-body">
+                            <?php
+                                require 'config.php';
+                                $tweet = $cl_tweet->find();
+                                foreach($tweet as $tweets){
+                                    echo "<p>$tweets->Tweet</p>";
+                                }
+                            ?>
+                        </div>
+                    </div>
                     <!-- <form action="" method="post" >
                         <div class="form-group">
                             <textarea class="form-control" placeholder="Apa yang kamu pikirkan?"></textarea>
