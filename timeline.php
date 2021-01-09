@@ -88,7 +88,7 @@
                                     <label for="tweet">Tweet :</label>
                                     <input type="text" name="tweet" class="form-control" placeholder="compose new tweet...">
                                 </div>
-                                <input type="submit" class="btn btn-primary" value="Send" name="send">
+                                <input type="submit" class="btn btn-primary" value="Send" name="Tweet">
                             </form>
                         </div>
                     </div>
@@ -97,25 +97,14 @@
                         <div class="card-body">
                             <?php
                                 require 'config.php';
-                                $tweet = $cl_tweet->find();
+                                $tweet = $collection2->find();
                                 foreach($tweet as $tweets){
                                     echo "<p>$tweets->Tweet</p>";
                                 }
                             ?>
                         </div>
                     </div>
-                    <!-- <form action="" method="post" >
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Apa yang kamu pikirkan?"></textarea>
-                        </div>
-                    </form>
-                    <?php for($i=0; $i < 6; $i++){ ?>
-                        <div class="card mb-3">
-                            <div class="card-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis veritatis nemo ad recusandae labore nihil iure qui eum consequatur, officiis facere quis sunt tempora impedit ullam reprehenderit facilis ex amet!
-                            </div>
-                        </div>
-                    <?php } ?> -->
+                    
                     
                 </div>
             
