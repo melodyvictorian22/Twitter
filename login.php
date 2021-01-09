@@ -24,6 +24,7 @@
                 $_SESSION["result"] = $test;
         
                 if(!empty($result)){
+
                     echo "You are successfully loggedIn";
                     
                     // $_SESSION["AkunLogin"] =  $result;
