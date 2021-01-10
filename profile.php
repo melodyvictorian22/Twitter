@@ -1,3 +1,26 @@
+<?php session_start();
+$user = $_SESSION["AkunLogin"];
+$testResult = $_SESSION["result"];
+$result = json_decode($testResult);
+require 'auth.php';
+
+
+
+if (isset($_POST['posting'])) {
+    require_once("config.php");
+
+    $res2 = json_decode(json_encode($result->_id), true);
+    $insertOneResult = $collection2->insertOne([
+        'Tweet' => $_POST['Tweet'],
+        'UserId' => $res2['$oid']
+    ]);
+
+    // echo $res2['$oid'];
+
+    header("Location: timeline.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +68,10 @@
                     <div class="profile-info-left">
                         <div class="text-center">
                             <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="avatar img-circle">
-                            <h2>Jack Bay</h2>
+                            <?php
+                                echo "<h1>" . $user . "</h1>";
+                                echo $result->Email;
+                            ?>
                         </div>
                         <div class="action-buttons">
                             <div class="row">
@@ -85,209 +111,30 @@
                             <li><a href="#followers" data-toggle="tab">FOLLOWERS</a></li>
                             <li><a href="#following" data-toggle="tab">FOLLOWING</a></li>
                         </ul>
-                        <div class="tab-content">
-                            <!-- activities -->
-                            <div class="tab-pane fade in active" id="activities">
-                                <div class="media activity-item">
-                                    <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">
-                                    </a>
-                                    <div class="media-body">
-                                        <p class="activity-title"><a href="#">Antonius</a> started following <a href="#">Jack Bay</a> <small class="text-muted">- 2m ago</small></p>
-                                        <small class="text-muted">Today 08:30 am - 02.05.2014</small>
-                                    </div>
-                                    <div class="btn-group pull-right activity-actions">
-                                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-th"></i>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                            <li><a href="#">I don't want to see this</a></li>
-                                            <li><a href="#">Unfollow Antonius</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Get Notification</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="media activity-item">
-                                    <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar" class="media-object avatar">
-                                    </a>
-                                    <div class="media-body">
-                                        <p class="activity-title"><a href="#">Jane Doe</a> likes <a href="#">Jack Bay</a> <small class="text-muted">- 36m ago</small></p>
-                                        <small class="text-muted">Today 07:23 am - 02.05.2014</small>
-                                    </div>
-                                    <div class="btn-group pull-right activity-actions">
-                                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-th"></i>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                            <li><a href="#">I don't want to see this</a></li>
-                                            <li><a href="#">Unfollow Jane Doe</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Get Notification</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="media activity-item">
-                                    <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Avatar" class="media-object avatar">
-                                    </a>
-                                    <div class="media-body">
-                                        <p class="activity-title"><a href="#">Michael</a> posted something for <a href="#">Jack Bay</a> <small class="text-muted">- 1h ago</small></p>
-                                        <small class="text-muted">Today 07:23 am - 02.05.2014</small>
-                                        <div class="activity-attachment">
-                                            <div class="well well-sm">
-                                                Professionally evolve corporate services without ethical leadership. Proactively re-engineer client-focused infrastructures before alternative potentialities. Competently predominate just in time e-tailers for leveraged solutions. Intrinsicly initiate end-to-end collaboration and idea-sharing after 24/365 ROI. Rapidiously.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="btn-group pull-right activity-actions">
-                                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-th"></i>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                            <li><a href="#">I don't want to see this</a></li>
-                                            <li><a href="#">Unfollow Michael</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Get Notification</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="media activity-item">
-                                    <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Avatar" class="media-object avatar">
-                                    </a>
-                                    <div class="media-body">
-                                        <p class="activity-title"><a href="#">Jack Bay</a> has uploaded two photos <small class="text-muted">- Yesterday</small></p>
-                                        <small class="text-muted">Yesterday 06:42 pm - 01.05.2014</small>
-                                        <div class="activity-attachment">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <a href="#" class="thumbnail">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Uploaded photo">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="btn-group pull-right activity-actions">
-                                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-th"></i>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                            <li><a href="#">I don't want to see this</a></li>
-                                            <li><a href="#">Unfollow Jack Bay</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Get Notification</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="media activity-item">
-                                    <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Avatar" class="media-object avatar">
-                                    </a>
-                                    <div class="media-body">
-                                        <p class="activity-title"><a href="#">Jack Bay</a> has changed his profile picture <small class="text-muted">- 2 days ago</small></p>
-                                        <small class="text-muted">2 days ago 05:42 pm - 30.04.2014</small>
-                                        <div class="activity-attachment">
-                                            <a href="#" class="thumbnail">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Uploaded photo">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="btn-group pull-right activity-actions">
-                                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-th"></i>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                            <li><a href="#">I don't want to see this</a></li>
-                                            <li><a href="#">Unfollow Jack Bay</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Get Notification</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-default center-block"><i class="fa fa-refresh"></i> Load more activities</button>
+                        <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="Tweet">Tweet :</label>
+                                <textarea type="text" name="Tweet" class="form-control" required="" placeholder="Apa yang sedang terjadi?"></textarea>
                             </div>
-                            <!-- end activities -->
-                            <!-- followers -->
-                            <div class="tab-pane fade" id="followers">
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">Antonius<br><span class="text-muted username">@mrantonius</span></a>
-                                        <button type="button" class="btn btn-sm btn-toggle-following pull-right"><i class="fa fa-checkmark-round"></i> <span>Following</span></button>
-                                    </div>
-                                </div>
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">Michael<br><span class="text-muted username">@iamichael</span></a>
-                                        <button type="button" class="btn btn-sm btn-default pull-right"><i class="fa fa-plus"></i> Follow</button>
-                                    </div>
-                                </div>
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">Stella<br><span class="text-muted username">@stella</span></a>
-                                        <button type="button" class="btn btn-sm btn-default pull-right"><i class="fa fa-plus"></i> Follow</button>
-                                    </div>
-                                </div>
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">Jane Doe<br><span class="text-muted username">@janed</span></a>
-                                        <button type="button" class="btn btn-sm btn-toggle-following pull-right"><i class="fa fa-checkmark-round"></i> <span>Following</span></button>
-                                    </div>
-                                </div>
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">John Simmons<br><span class="text-muted username">@jsimm</span></a>
-                                        <button type="button" class="btn btn-sm btn-default pull-right"><i class="fa fa-plus"></i> Follow</button>
-                                    </div>
-                                </div>
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">Antonius<br><span class="text-muted username">@mrantonius</span></a>
-                                        <button type="button" class="btn btn-sm btn-toggle-following pull-right"><i class="fa fa-checkmark-round"></i> <span>Following</span></button>
-                                    </div>
-                                </div>
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">Michael<br><span class="text-muted username">@iamichael</span></a>
-                                        <button type="button" class="btn btn-sm btn-default pull-right"><i class="fa fa-plus"></i> Follow</button>
-                                    </div>
-                                </div>
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">Stella<br><span class="text-muted username">@stella</span></a>
-                                        <button type="button" class="btn btn-sm btn-default pull-right"><i class="fa fa-plus"></i> Follow</button>
-                                    </div>
-                                </div>
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">Jane Doe<br><span class="text-muted username">@janed</span></a>
-                                        <button type="button" class="btn btn-sm btn-toggle-following pull-right"><i class="fa fa-checkmark-round"></i> <span>Following</span></button>
-                                    </div>
-                                </div>
-                                <div class="media user-follower">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User Avatar" class="media-object pull-left">
-                                    <div class="media-body">
-                                        <a href="#">John Simmons<br><span class="text-muted username">@jsimm</span></a>
-                                        <button type="button" class="btn btn-sm btn-default pull-right"><i class="fa fa-plus"></i> Follow</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <input type="submit" class="btn btn-primary" value="Tweet" name="posting">
+                        </form>
+                    </div>
+                </div>
+                <br><br>
+                <div class="card">
+                    <div class="card-body">
+                        <?php
+                        require 'config.php';
+                        $Tweet = $collection2->find();
+                        foreach ($Tweet as $tweets) {
+                            echo "<p>$tweets->Tweet</p>";
+                        }
+                        ?>
+                    </div>
+                </div>
                             <!-- end followers -->
                             <!-- following -->
                             <div class="tab-pane fade" id="following">
