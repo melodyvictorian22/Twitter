@@ -1,30 +1,18 @@
 <?php
-    require 'config.php'
+    session_start();
+    
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Twitter Timeline</title>
-
-        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-        <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-        <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-        <link rel="stylesheet" href="assets/css/Dark-NavBar.css">
-        <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
-        <link rel="stylesheet" href="assets/css/Pretty-Product-List.css">
-        <link rel="stylesheet" href="assets/css/profile.css">
-        <link rel="stylesheet" href="assets/css/timeline.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Twitter Timeline</title>
+    <link rel="stylesheet" href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <style>
             body {
                 background: url('img/bg.png') no-repeat center center fixed;
@@ -43,35 +31,28 @@
             }
         </style>
     </head>
+    <nav>
+    <div class="menu-icon"><span class="fas fa-bars"></span></div>
+    <div class="logo">Twitter</div>
+    <div class="nav-items">
+        <li><a href="timeline.php">Home</a></li>
+        <li><a href="profile.php">Profile</a></li>
+        <li><a href="search.php">Search</a></li>
+    </div>
+    <div class="search-icon"><span class="fas fa-search"></span></div>
+    <div class="cancel-icon"><span class="fas fa-times"></span></div>
+    <div class="nav-items2">
+        <li><a href="logout.php">Logout</a></li>
+    </div>
+</nav>
     <body class="bg-light">
-            <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button"
-                style="height:80px;background-color:#37434d;color:#ffffff;">
-                <div class="container-fluid"><a class="navbar-brand" href="index.html"><i
-                            class="fab fa-twitter"></i>&nbsp;Twitter</a><button data-toggle="collapse"
-                        class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
-                            class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" style="color: #ffffff;" href="index.html"><i
-                                        class="fa fa-home"></i>&nbsp;Home</a></li>
-                            <li class="nav-item"><a class="nav-link" style="color: #ffffff;" href="search.php"><i
-                                        class="fa fa-search"></i>&nbsp;Search</a></li>
-                            <li class="nav-item"><a class="nav-link" style="color:#ffffff;" href="profile.html"><i
-                                        class="fa fa-user-circle-o"></i>&nbsp;Profile</a></li>
-                            <li class="nav-item"><a class="nav-link" style="color:#ffffff;" href="login.html"><i
-                                        class="fa fa-sign-out"></i>&nbsp;Sign Out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
             <div class="container mt-5">
                 <div class="card">
                     <div class="card-body">
                         <form action="" method="POST">
                             <div class="form-group">
                                 <label for="user">Search User:</label>
-                                <input type="text" name="searhcUser" class="form-control" placeholder="search user..">
+                                <input type="search" name="searchUser" class="form-control" placeholder="search user..">
                             </div>
                             <input type="submit" class="btn btn-primary" value="Search" name="search">
                         </form>
@@ -80,14 +61,29 @@
                 <br><br>
                 <div class="card">
                     <div class="card-body">
-                        <?php
-                            require "config.php";
-                            if(isset($_POST['search'])){
-                                $username = $_POST['searchUser'];
-                                $Result = $collection1->find(['NamaPengguna' => $username]);
-                                echo "<h1>$Result->NamaPengguna</h1>";
-                            }
-                        ?>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <img class="img img-responsive rounded-circle mb-3" width="90" src="img/default.svg ?>" />
+                            </div>
+                            <div class = "col-sm-4">
+                                <?php
+                                    if(isset($_POST["search"])){
+                                        require_once("config.php");
+                                        $searchUser = $_POST["searchUser"];
+                                        if($collection1){
+                                            $find = $collection1->findOne(["NamaPengguna" => $searchUser]);
+                                            if(!empty($find)){
+                                                echo "<h2><a href='profile.php'>".$find->Nama."</a></h2>";
+                                                echo "<h3>$find->NamaPengguna</h3>";
+                                            }
+                                            else{
+                                                echo "Tidak ditemukan !";
+                                            }
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

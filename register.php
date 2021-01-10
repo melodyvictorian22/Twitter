@@ -17,33 +17,35 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Register Twitter</title>
 
-        <link rel="stylesheet" href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
-        <style>
-            body {
-                background: url('img/bg.png') no-repeat center center fixed;
-                -webkit-background-size: cover;
-                -moz-background-size: cover;
-                background-size: cover;
-                -o-background-size: cover;
-            }
-            footer {
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                color: black;
-                text-align: center;
-            }
-        </style>
-    </head>
-    
-    <body class="bg-light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register Twitter</title>
+
+    <link rel="stylesheet" href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('img/bg.png') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
 
     <div class="container mt-5">
         <div class="row">
@@ -89,10 +91,11 @@
         </div>
     </div>
 
-    </body>
+</body>
 
-    <footer class="container-fluid text-center">
-        <p>© 2021 Twitter, Inc.</p>
-            
-    </footer>
+<footer class="container-fluid text-center">
+    <p>© 2021 Twitter, Inc.</p>
+
+</footer>
+
 </html>

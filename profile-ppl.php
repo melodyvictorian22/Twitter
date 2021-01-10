@@ -5,25 +5,6 @@ $result = json_decode($testResult);
 require 'auth.php';
 
 
-require 'config.php';
-if(!isset($_SESSION['AkunSedangLogin'])){
-    header('Location:timeline.php');
-}
-if(!isset($_GET['id'])){
-    header('Location:timeline.php');
-}
-$userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
-$profile_id = $_GET['id'];
-$profileData = $collection1->findOne( array('_id' => new MongoDB\BSON\ObjectID("$profile_id")));
-
-function get_recent_tweets($db){
-    require_once('config.php');
-    $id = $_GET['id'];
-    $results = $collection2->find( array('authorId' => new MongoDB\BSON\ObjectID("$id")));
-    var_dump($id);
-    $recent_tweets = iterator_to_array($results);
-    return $recent_tweets;
-}
 
 if (isset($_POST['posting'])) {
     require_once("config.php");
@@ -58,6 +39,7 @@ if (isset($_POST['posting'])) {
     </style>
 </head>
 
+
 <body>
 <nav>
 <div class="menu-icon"><span class="fas fa-bars"></span></div>
@@ -78,24 +60,24 @@ if (isset($_POST['posting'])) {
         <div class="user-profile">
             <div class="profile-header-background"><img src="http://demo.thedevelovers.com/dashboard/queenadmin-1.2/assets/img/city.jpg" alt="Profile Header Background"></div>
             <div class="row">
-                <div class="col-md-4" style="background-color: white;">
+            <div class="col-md-4" style="background-color: white;">
                     <div class="profile-info-left">
                         <div class="text-center">
                             <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="avatar img-circle">
-                            <?php
-                                echo "<h1>".$userData['NamaPengguna']."</h1>";
-
-                                echo "<p>".$userData['Email']."</p>";
-                            ?>
+                            <h2> <?php
+                                    echo "<h1>" . $user . "</h1>";
+                                    echo $result->Email;
+                                    ?>
+                            </h2>
                         </div>
                         <br>
                         <div class="action-buttons">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="#" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Edit Profile</a>
+                                    <a href="#" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Follow</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="#" class="btn btn-danger btn-block"><i class="fa fa-android-mail"></i> Delete Account</a>
+                                    <a href="#" class="btn btn-primary btn-block"><i class="fa fa-android-mail"></i> Message</a>
                                 </div>
                             </div>
                         </div>
@@ -109,6 +91,7 @@ if (isset($_POST['posting'])) {
                             <p><span class="badge">124</span> Followers</p>
                             <p><span class="badge">620</span> Likes</p>
                         </div>
+                       
                     </div>
                 </div>
                 <div class="col-md-8" style="background-color: white;">
@@ -118,27 +101,6 @@ if (isset($_POST['posting'])) {
                             <li><a href="#followers" data-toggle="tab">FOLLOWERS</a></li>
                             <li><a href="#following" data-toggle="tab">FOLLOWING</a></li>
                         </ul>
-                <!-- <div class="col-md-8">
-                    <div class="card">
-                        
-                    </div>
-                <br><br>
-                <div class="card">
-                    <div class="card-body">
-                        <?php
-                            $recent_tweets = get_recent_tweets($db);
-                            foreach ($recent_tweets as $tweet) {
-                                echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
-                                echo '<p>'.$tweet['tweet'].'</p>';
-                                echo '<p>'.$tweet['created'].'</p>';
-                                // echo "<h1>" . $user . "</h1>";
-                                // echo "<p>".$tweet['tweet']."</p>";
-                                // echo "<p>".$tweet['created']."</p>";
-                                echo '<hr>';
-                            }
-                        ?>
-                    </div>
-                </div> -->
                         <div class="tab-content">
                             <!-- activities -->
                             <div class="tab-pane fade in active" id="activities">
