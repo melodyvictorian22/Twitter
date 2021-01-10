@@ -108,7 +108,7 @@ if (isset($_POST['posting'])) {
                         <form action="" method="POST">
                             <div class="form-group">
                                 <label for="Tweet">Tweet :</label>
-                                <input type="text" name="Tweet" class="form-control" placeholder="compose new tweet...">
+                                <textarea type="text" name="Tweet" class="form-control" required="" placeholder="Apa yang sedang terjadi?"></textarea>
                             </div>
                             <input type="submit" class="btn btn-primary" value="Tweet" name="posting">
                         </form>
