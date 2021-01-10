@@ -417,23 +417,6 @@ if (isset($_POST['posting'])) {
 </head>
 
 <body>
-    <nav>
-        <div class="menu-icon"><span class="fas fa-bars"></span></div>
-        <div class="logo">CodingNepal</div>
-        <div class="nav-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blogs</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Feedback</a></li>
-        </div>
-        <div class="search-icon"><span class="fas fa-search"></span></div>
-        <div class="cancel-icon"><span class="fas fa-times"></span></div>
-        <form action="#">
-            <input type="search" class="search-data" placeholder="Search" required>
-            <button type="submit" class="fas fa-search"></button>
-        </form>
-    </nav>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container">
         <div class="user-profile">
@@ -453,7 +436,7 @@ if (isset($_POST['posting'])) {
                         <div class="action-buttons">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="#" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Edit Profile</a>
+                                    <a href="#" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Follow</a>
                                 </div>
                                 <div class="col-xs-6">
                                     <a href="#" class="btn btn-primary btn-block"><i class="fa fa-android-mail"></i> Message</a>
@@ -469,6 +452,15 @@ if (isset($_POST['posting'])) {
                             <p><span class="badge">332</span> Following</p>
                             <p><span class="badge">124</span> Followers</p>
                             <p><span class="badge">620</span> Likes</p>
+                        </div>
+                        <div class="section">
+                            <h3>Social</h3>
+                            <ul class="list-unstyled list-social">
+                                <li><a href="#"><i class="fa fa-twitter"></i> @jackbay</a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i> Jack Bay</a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i> jackdribs</a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i> Jack Bay</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
