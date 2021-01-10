@@ -24,7 +24,6 @@ $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
 //     $recent_tweets = iterator_to_array($results);
 //     return $recent_tweets;
 // }
-
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +103,7 @@ $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
                             <div class="tab-pane fade in active" id="activities">
                                 <div class="media activity-item">
                                     <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">
+                                        <!-- <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar"> -->
                                     </a>
                                     <!-- <div class="card">
                                         <div class="card-body">
@@ -130,27 +129,27 @@ $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
                                                 $userId = json_decode(json_encode($id), true);
                                                 $Tweet = $collection2->find(["UserId" => $userId['$oid']]);
                                                 foreach($Tweet as $tweets){
+                                                    echo '<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">';
                                                     echo "<h3>".$userData['NamaPengguna']."</h3>";
                                                     echo "<p>$tweets->Tweet</p>";
+                                                    ?>
+                                                    <form method="POST">
+                                                    <input type="submit" class="btn btn-primary" value="Hapus" name="delete">
+                                                    </form>
+                                                    <br><br>
+                                                    <?php
                                                 }
+                                                     $Tweet2 = $collection2->findOne(["UserId" => $userId['$oid']]);
+                                                    if(isset($_POST['delete'])){
+                                                        $delete = $collection2->deleteOne(["_id" => $Tweet2->_id]);
+                                                        $_SESSION['deleteTweet'] = "Delete tweet berhasil";
+                                                        header("Location : profile.php");
+
+                                                    }
+                                                
                                             ?>
                                         </div>
                                     </div>
-                                    <div class="btn-group pull-right activity-actions">
-                                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fa fa-th"></i>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                            <li><a href="#">I don't want to see this</a></li>
-                                            <li><a href="#">Unfollow Antonius</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Get Notification</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <button type="button" class="btn btn-default center-block"><i class="fa fa-refresh"></i> Load more activities</button>
                             </div>
                             <!-- end activities -->
 
