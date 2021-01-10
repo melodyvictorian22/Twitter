@@ -71,6 +71,9 @@ if (isset($_POST['posting'])) {
         <input type="search" class="search-data" placeholder="Search" required>
         <button type="submit" class="fas fa-search"></button>
     </form>
+    <div class="nav-items2">
+        <li><a href="#">Logout</a></li>
+    </div>
 </nav>
 
 <body class="bg-light">
