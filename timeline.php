@@ -34,6 +34,7 @@ if (isset($_POST['posting'])) {
     <title>Twitter Timeline</title>
     <link rel="stylesheet" href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <style>
         body {
@@ -95,17 +96,20 @@ if (isset($_POST['posting'])) {
                 </div>
             </div>
 
-
+            
             <div class="col-md-8">
+                
                 <div class="card">
                     <div class="card-body">
-                        <form action="" method="POST">
-                            <div class="form-group">
-                                <label for="Tweet">Tweet :</label>
-                                <textarea type="text" name="Tweet" class="form-control" required="" placeholder="Apa yang sedang terjadi?"></textarea>
-                            </div>
-                            <input type="submit" class="btn btn-primary" value="Tweet" name="posting">
-                        </form>
+                        
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <label for="Tweet">Tweet :</label>
+                                    <textarea type="text" name="Tweet" class="form-control" required="" placeholder="Apa yang sedang terjadi?"></textarea>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Tweet" name="posting">
+                            </form>
+                        
                     </div>
                 </div>
                 <br><br>
