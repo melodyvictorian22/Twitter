@@ -8,11 +8,35 @@
     <title>Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<nav>
+    <div class="menu-icon"><span class="fas fa-bars"></span></div>
+    <div class="logo">Twitter</div>
+    <div class="nav-items">
+        <li><a href="timeline.php">Home</a></li>
+        <li><a href="profile.php">Profile</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Feedback</a></li>
+    </div>
+    <div class="search-icon"><span class="fas fa-search"></span></div>
+    <div class="cancel-icon"><span class="fas fa-times"></span></div>
+    <form action="#">
+        <input type="search" class="search-data" placeholder="Search" required>
+        <button type="submit" class="fas fa-search"></button>
+    </form>
+    <div class="nav-items2">
+        <li><a href="#">Logout</a></li>
+    </div>
+</nav>
+    
     <div class="container">
         <div class="user-profile">
             <div class="profile-header-background"><img src="http://demo.thedevelovers.com/dashboard/queenadmin-1.2/assets/img/city.jpg" alt="Profile Header Background"></div>
