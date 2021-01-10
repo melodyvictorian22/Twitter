@@ -6,12 +6,12 @@
     
     
 
-    if(isset($_POST['send'])){
+    if(isset($_POST['posting'])){
         require_once("config.php");
 
         $res2 = json_decode(json_encode($result->_id), true);
         $insertOneResult = $collection2->insertOne([
-            'Tweet' => $_POST['tweet'],
+            'Tweet' => $_POST['Tweet'],
             'UserId' => $res2['$oid']
         ]);
         
@@ -85,10 +85,10 @@
                         <div class="card-body">
                             <form action="" method="POST">
                                 <div class="form-group">
-                                    <label for="tweet">Tweet :</label>
-                                    <input type="text" name="tweet" class="form-control" placeholder="compose new tweet...">
+                                    <label for="Tweet">Tweet :</label>
+                                    <input type="text" name="Tweet" class="form-control" placeholder="compose new tweet...">
                                 </div>
-                                <input type="submit" class="btn btn-primary" value="Send" name="Tweet">
+                                <input type="submit" class="btn btn-primary" value="Tweet" name="posting">
                             </form>
                         </div>
                     </div>
@@ -97,8 +97,8 @@
                         <div class="card-body">
                             <?php
                                 require 'config.php';
-                                $tweet = $collection2->find();
-                                foreach($tweet as $tweets){
+                                $Tweet = $collection2->find();
+                                foreach($Tweet as $tweets){
                                     echo "<p>$tweets->Tweet</p>";
                                 }
                             ?>
