@@ -4,7 +4,7 @@ $testResult = $_SESSION["result"];
 $result = json_decode($testResult);
 require 'auth.php';
 
-
+$userData = $collection1->findOne( array('_id' => $_SESSION['AkunSedangLogin']));
 
 if (isset($_POST['posting'])) {
     require_once("config.php");
@@ -12,6 +12,7 @@ if (isset($_POST['posting'])) {
     $res2 = json_decode(json_encode($result->_id), true);
     $insertOneResult = $collection2->insertOne([
         'Tweet' => $_POST['Tweet'],
+        'UserTweet' => $user,
         'UserId' => $res2['$oid']
     ]);
 
@@ -60,8 +61,8 @@ if (isset($_POST['posting'])) {
     <div class="logo">Twitter</div>
     <div class="nav-items">
         <li><a href="#">Home</a></li>
-        <li><a href="profile.php">Profile</a></li>
-        <li><a href="#">Blogs</a></li>
+        <li><a href="profile.php?id=<?php echo $_SESSION['AkunSedangLogin']; ?>">Profile</a></li>
+        <li><a href="userList.php">Explore</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Feedback</a></li>
     </div>
@@ -84,14 +85,14 @@ if (isset($_POST['posting'])) {
 
                 <div class="card">
                     <div class="card-body text-center">
-                        <p><a href="profile.php">My Profile</a></p>
+                        <!-- <p><a href="profile.php">My Profile</a></p> -->
                         <img class="img img-responsive rounded-circle mb-3" width="160" src="img/default.svg ?>" />
 
                         <?php
 
-                        echo "<h1>" . $user . "</h1>";
+                        echo "<h1>".$userData['NamaPengguna']."</h1>";
 
-                        echo $result->Email;
+                        echo "<p>".$userData['Email']."</p>";
 
 
                         ?>
@@ -104,11 +105,12 @@ if (isset($_POST['posting'])) {
 
             
             <div class="col-md-8">
-                
+                <h1>Beranda</h1>
+                <hr>
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body ">
                         
-                            <form action="" method="POST">
+                            <form action="createTweet.php" method="POST">
                                 <div class="form-group">
                                     <label for="Tweet">Tweet :</label>
                                     <textarea type="text" name="Tweet" class="form-control" required="" placeholder="Apa yang sedang terjadi?"></textarea>
@@ -119,18 +121,33 @@ if (isset($_POST['posting'])) {
                     </div>
                 </div>
                 <br><br>
+                
+
                 <div class="card">
                     <div class="card-body">
-                        <?php
-                        require 'config.php';
-                        $Tweet = $collection2->find();
-                        foreach ($Tweet as $tweets) {
-                            echo "<p>$tweets->Tweet</p>";
-                        }
-                        ?>
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <?php
+                                            require 'config.php';
+                                            $Tweet = $collection2->find();
+                                            foreach ($Tweet as $tweets) {
+                                                echo "<tr>";
+                                                echo "<td>".$user."</td>";
+                                                echo "<td>".$tweets->Tweet."</td>";
+                                                echo "<td><textarea type='text' name='Tweet' class='form-control' placeholder='Apa yang sedang terjadi?'>".""."</textarea></td>";
+                                                echo "<td><input type='submit' class='btn btn-primary' value='Tweet' name='posting'></td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
+                                    
+                                    </thead>
+                                </table>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
 
             </div>
 

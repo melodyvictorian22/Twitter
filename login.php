@@ -2,10 +2,9 @@
     require_once("config.php");
     
     if(isset($_POST['login'])){
-
          if(isset($_POST['NamaPengguna']) && isset($_POST['Password'])){
             $username = $_POST['NamaPengguna'];
-            $password = $_POST['Password'];
+            $password = hash('sha256', $_POST['Password']);
             if(empty($username)){
                 die("Empty or invalid username");
             }
@@ -24,10 +23,9 @@
                 $_SESSION["result"] = $test;
         
                 if(!empty($result)){
-
+                    $_SESSION["AkunSedangLogin"] = $result->_id;
                     echo "You are successfully loggedIn";
                     
-                    // $_SESSION["AkunLogin"] =  $result;
                     header("Location: timeline.php");
                 }else{
                     echo "Wrong combination of username and password";
@@ -81,7 +79,7 @@
                 <h4>Masuk ke Twitter</h4>
                 <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
 
-                <form action="" method="POST">
+                <form action="login.php" method="POST">
 
                     <div class="form-group">
                         <label for="NamaPengguna"><strong>Nama Pengguna</strong></label>

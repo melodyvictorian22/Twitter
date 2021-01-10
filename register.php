@@ -1,33 +1,15 @@
 <?php session_start();
-    
+    require_once("config.php");
+
     if(isset($_POST['register'])){
-        require_once("config.php");
-        
         // filter data yang diinputkan
         $insertOneResult = $collection1->insertOne([
             'Nama' => $_POST['Nama'],
             'Email' => $_POST['Email'],
-            'Password' => $_POST['Password'],
+            'Password' => hash('sha256', $_POST['Password']),
             'NamaPengguna' => $_POST['NamaPengguna'],
         ]);
-        // // menyiapkan query
-        // $sql = "INSERT INTO users (name, username, email, password) 
-        //         VALUES (:name, :username, :email, :password)";
-        // $stmt = $db->prepare($sql);
-
-        // // bind parameter ke query
-        // $params = array(
-        //     ":name" => $name,
-        //     ":username" => $username,
-        //     ":password" => $password,
-        //     ":email" => $email
-        // );
-
-        // // eksekusi query untuk menyimpan ke database
-        // $saved = $stmt->execute($params);
-
-        // jika query simpan berhasil, maka user sudah terdaftar
-        // maka alihkan ke halaman login
+        
         $_SESSION['success'] = "Selamat telah bergabung bersama kami!";
         header("Location: index.php");
     }
@@ -73,7 +55,7 @@
             <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
 
         
-            <form action="" method="POST">
+            <form action="register.php" method="POST">
                 
                 <div class="form-group">
                     <label for="name"><strong>Nama Lengkap</strong></label>
