@@ -115,17 +115,17 @@ $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
                                     <!-- <div class="card">
                                         <div class="card-body">
                                             <?php
-                                                $recent_tweets = get_recent_tweets($db);
-                                                foreach ($recent_tweets as $tweet) {
-                                                    // echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
-                                                    // echo '<p>'.$tweet['tweet'].'</p>';
-                                                    // echo '<p>'.$tweet['created'].'</p>';
-                                                    echo "<h1>" . $user . "</h1>";
-                                                    echo "<p>".$tweet['tweet']."</p>";
-                                                    echo "<p>".$tweet['created']."</p>";
-                                                    echo '<hr>';
-                                                }
-                                            ?>
+                                            //     $recent_tweets = get_recent_tweets($db);
+                                            //     foreach ($recent_tweets as $tweet) {
+                                            //         // echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
+                                            //         // echo '<p>'.$tweet['tweet'].'</p>';
+                                            //         // echo '<p>'.$tweet['created'].'</p>';
+                                            //         echo "<h1>" . $user . "</h1>";
+                                            //         echo "<p>".$tweet['tweet']."</p>";
+                                            //         echo "<p>".$tweet['created']."</p>";
+                                            //         echo '<hr>';
+                                            //     }
+                                            // ?>
                                         </div>
                                     </div> -->
                                     <div class="media-body">
