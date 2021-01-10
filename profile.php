@@ -76,7 +76,7 @@ if (isset($_POST['posting'])) {
                                     <a href="#" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Edit Profile</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="#" class="btn btn-primary btn-block"><i class="fa fa-android-mail"></i> Message</a>
+                                    <a href="#" class="btn btn-danger btn-block"><i class="fa fa-android-mail"></i> Delete Account</a>
                                 </div>
                             </div>
                         </div>
