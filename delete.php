@@ -10,7 +10,7 @@
         require 'config.php';
         $collection1->deleteOne($userData);
         $_SESSION['suksesDelete'] = "Data Akun Twitter Berhasil dihapus";
-        header("Location: index.php");
+        header("Location: profile.php");
     }
 
 ?>
