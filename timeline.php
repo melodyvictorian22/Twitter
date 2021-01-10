@@ -106,7 +106,7 @@ if (isset($_POST['posting'])) {
                 <div class="card">
                     <div class="card-body ">
                         
-                            <form action="createTweet.php" method="POST">
+                            <form action="" method="POST">
                                 <div class="form-group">
                                     <label for="Tweet">Tweet :</label>
                                     <textarea type="text" name="Tweet" class="form-control" required="" placeholder="Apa yang sedang terjadi?"></textarea>
