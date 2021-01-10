@@ -5,7 +5,17 @@ $result = json_decode($testResult);
 require 'auth.php';
 
 $userData = $collection1->findOne( array('_id' => $_SESSION['AkunSedangLogin']));
-
+function get_recent_tweets($db){
+    $resultTweet = $db->cl_follow->find( array('follower' => $_SESSION['AkunSedangLogin']));
+    $resultTweet = iterator_to_array($resultTweet);
+    $user_following = array();
+    foreach($resultTweet as $entry){
+        $user_following[] = $entry['AkunSedangLogin'];
+    }
+    $resultTweet = $db->cl_tweet->find( array('authorId' => array('$in'=>$user_following)));
+    $recent_tweets = iterator_to_array($resultTweet);
+    return $recent_tweets;
+}
 if (isset($_POST['posting'])) {
     require_once("config.php");
 
@@ -116,7 +126,7 @@ if (isset($_POST['posting'])) {
                 <br><br>
                 
 
-                <div class="card">
+                <!-- <div class="card">
                     <div class="card-body">
                         <form action="" method="POST">
                             <div class="form-group">
@@ -140,8 +150,20 @@ if (isset($_POST['posting'])) {
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
 
+                <div>
+                    <p><b>Tweets dari following kamu!</b></p>
+                    <?php
+                        $recent_tweets = get_recent_tweets($db);
+                        foreach($recent_tweets as $tweet){
+                            echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
+                            echo '<p>'.$tweet['tweet'].'</p>';
+                            echo '<p>'.$tweet['creator'].'</p>';
+                            echo '<hr>';
+                        }
+                    ?>
+                </div>
             </div>
 
         </div>

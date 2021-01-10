@@ -8,6 +8,8 @@ $testLogin = $_SESSION["result"];
 $resLogin = json_decode($testLogin);
 require 'auth.php';
 
+$userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
+
 require 'config.php';
 if(isset($_POST['follow'])){
     $idUser = json_decode(json_encode($resLogin->_id), true);
