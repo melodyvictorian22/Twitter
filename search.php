@@ -1,6 +1,14 @@
-<?php
-    session_start();
-    
+<?php session_start();
+    require_once('config.php');
+    if(!isset($_SESSION['AkunSedangLogin'])){
+        header('Location: timeline.php');
+    }
+    $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
+    function get_user_list($db){
+        $resultList = $db->cl_account->find();
+        $users = iterator_to_array($resultList);
+        return $users;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -88,6 +96,30 @@
                                 ?>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                    <table class="table">
+                        <div class = "col-dm-8">
+                            <h2><b>Orang yang mungkin Anda kenal</b></h2>
+                            <?php
+                                $user_list = get_user_list($db);
+                                if(isset($_POST["Kunjungi"])){
+                                    
+                                }
+
+                                foreach($user_list as $list){
+                                    echo '<tr>';
+                                    echo '<td><span>'.$list['NamaPengguna'].'</span></td>';
+                                    echo "<td><a href = 'profile-ppl.php?id=".$list['_id']."'class='btn btn-success'>Kunjungi Profile</a></td>";
+                                    echo "<td><a href = 'follow.php?id=".$list['_id']."'class='btn btn-primary'>Follow</a></td>";
+                                    echo '</tr>';
+                                }
+                            ?>
+                        </div>
+                    </table>
                     </div>
                 </div>
             </div>
