@@ -5,39 +5,25 @@ $result = json_decode($testResult);
 require 'auth.php';
 
 
-require 'config.php';
-if(!isset($_SESSION['AkunSedangLogin'])){
-    header('Location:timeline.php');
-}
-if(!isset($_GET['id'])){
-    header('Location:timeline.php');
-}
+// require 'config.php';
+// if(!isset($_SESSION['AkunSedangLogin'])){
+//     header('Location:timeline.php');
+// }
+// if(!isset($_GET['id'])){
+//     header('Location:timeline.php');
+// }
 $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
-$profile_id = $_GET['id'];
-$profileData = $collection1->findOne( array('_id' => new MongoDB\BSON\ObjectID("$profile_id")));
+// $profile_id = $_GET['id'];
+// $profileData = $collection1->findOne( array('_id' => new MongoDB\BSON\ObjectID("$profile_id")));
 
-function get_recent_tweets($db){
-    require_once('config.php');
-    $id = $_GET['id'];
-    $results = $collection2->find( array('authorId' => new MongoDB\BSON\ObjectID("$id")));
+// function get_recent_tweets($db){
+//     require_once('config.php');
+//     $id = $_GET['id'];
+//     $results = $collection2->find( array('authorId' => new MongoDB\BSON\ObjectID("$id")));
     
-    $recent_tweets = iterator_to_array($results);
-    return $recent_tweets;
-}
-
-if (isset($_POST['posting'])) {
-    require_once("config.php");
-
-    $res2 = json_decode(json_encode($result->_id), true);
-    $insertOneResult = $collection2->insertOne([
-        'Tweet' => $_POST['Tweet'],
-        'UserId' => $res2['$oid']
-    ]);
-
-    // echo $res2['$oid'];
-
-    header("Location: timeline.php");
-}
+//     $recent_tweets = iterator_to_array($results);
+//     return $recent_tweets;
+// }
 
 ?>
 
@@ -100,10 +86,6 @@ if (isset($_POST['posting'])) {
                             </div>
                         </div>
                         <div class="section">
-                            <h3>About Me</h3>
-                            <p>Energistically administrate 24/7 portals and enabled catalysts for change. Objectively revolutionize client-centered e-commerce via covalent scenarios. Continually envisioneer.</p>
-                        </div>
-                        <div class="section">
                             <h3>Statistics</h3>
                             <p><span class="badge">332</span> Following</p>
                             <p><span class="badge">124</span> Followers</p>
@@ -126,16 +108,16 @@ if (isset($_POST['posting'])) {
                 <div class="card">
                     <div class="card-body">
                         <?php
-                            $recent_tweets = get_recent_tweets($db);
-                            foreach ($recent_tweets as $tweet) {
-                                echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
-                                echo '<p>'.$tweet['tweet'].'</p>';
-                                echo '<p>'.$tweet['created'].'</p>';
-                                // echo "<h1>" . $user . "</h1>";
-                                // echo "<p>".$tweet['tweet']."</p>";
-                                // echo "<p>".$tweet['created']."</p>";
-                                echo '<hr>';
-                            }
+                            // $recent_tweets = get_recent_tweets($db);
+                            // foreach ($recent_tweets as $tweet) {
+                            //     echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
+                            //     echo '<p>'.$tweet['tweet'].'</p>';
+                            //     echo '<p>'.$tweet['created'].'</p>';
+                            //     // echo "<h1>" . $user . "</h1>";
+                            //     // echo "<p>".$tweet['tweet']."</p>";
+                            //     // echo "<p>".$tweet['created']."</p>";
+                            //     echo '<hr>';
+                            // }
                         ?>
                     </div>
                 </div>
@@ -149,11 +131,13 @@ if (isset($_POST['posting'])) {
                                     <div class="media-body">
                                         <div class="card-body">
                                             <?php
-                                            require 'config.php';
-                                            $Tweet = $collection2->find();
-                                            foreach ($Tweet as $tweets) {
-                                                echo "<p>$tweets->Tweet</p>";
-                                            }
+                                                require 'config.php';
+                                                $id = json_decode(json_encode($result->_id), true);;
+                                                $Tweet = $collection2->find(["UserId" => $id['$oid']]);
+                                                foreach($Tweet as $tweets){
+                                                    echo "<h3>$tweets->UserTweet</h3>";
+                                                    echo "<p>$tweets->Tweet</p>";
+                                                }
                                             ?>
                                         </div>
                                     </div>

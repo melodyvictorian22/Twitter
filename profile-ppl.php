@@ -2,7 +2,21 @@
 $user = $_SESSION["akunCari"];
 $testResult = $_SESSION["resultCari"];
 $res = json_decode($testResult);
+
+$userLogin = $_SESSION["AkunLogin"];
+$testLogin = $_SESSION["result"];
+$resLogin = json_decode($testLogin);
 require 'auth.php';
+
+require 'config.php';
+if(isset($_POST['follow'])){
+    $idUser = json_decode(json_encode($resLogin->_id), true);
+    $idFollow = json_decode(json_encode($res->_id), true);
+    $insert = $collection3->insertOne([
+        "UserId" => $idUser['$oid'],
+        "Following" => $idFollow['$oid']
+    ]);
+}
 
 ?>
 
@@ -56,22 +70,8 @@ require 'auth.php';
                         </div>
                         <br>
                         <div class="action-buttons">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <a href="#" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Follow</a>
-                                </div>
-                                <div class="col-xs-6">
-                                    <a href="#" class="btn btn-primary btn-block"><i class="fa fa-android-mail"></i> Message</a>
-                                </div>
-                            </div>
+                            <input type="button" class="btn btn-success btn-block" value="Follow" name="follow">
                         </div>
-                        <div class="section">
-                            <h3>Statistics</h3>
-                            <p><span class="badge">332</span> Following</p>
-                            <p><span class="badge">124</span> Followers</p>
-                            <p><span class="badge">620</span> Likes</p>
-                        </div>
-                       
                     </div>
                 </div>
                 <div class="col-md-8" style="background-color: white;">
@@ -84,10 +84,6 @@ require 'auth.php';
                         <div class="tab-content">
                             <!-- activities -->
                             <div class="tab-pane fade in active" id="activities">
-                                <div class="media activity-item">
-                                    <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">
-                                    </a>
                                     <div class="media-body">
                                         <div class="card-body">
                                             <?php
