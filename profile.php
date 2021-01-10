@@ -85,12 +85,6 @@ $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
                                 </div>
                             </div>
                         </div>
-                        <div class="section">
-                            <h3>Statistics</h3>
-                            <p><span class="badge">332</span> Following</p>
-                            <p><span class="badge">124</span> Followers</p>
-                            <p><span class="badge">620</span> Likes</p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-8" style="background-color: white;">
@@ -132,10 +126,11 @@ $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
                                         <div class="card-body">
                                             <?php
                                                 require 'config.php';
-                                                $id = json_decode(json_encode($result->_id), true);;
-                                                $Tweet = $collection2->find(["UserId" => $id['$oid']]);
+                                                $id = $userData['_id'];
+                                                $userId = json_decode(json_encode($id), true);
+                                                $Tweet = $collection2->find(["UserId" => $userId['$oid']]);
                                                 foreach($Tweet as $tweets){
-                                                    echo "<h3>$tweets->UserTweet</h3>";
+                                                    echo "<h3>".$userData['NamaPengguna']."</h3>";
                                                     echo "<p>$tweets->Tweet</p>";
                                                 }
                                             ?>
