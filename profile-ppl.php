@@ -13,7 +13,7 @@ require 'auth.php';
     <meta charset="utf-8">
     <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>Profile Activities Followers Following - Bootdey.com</title>
+    <title>Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
@@ -66,10 +66,6 @@ require 'auth.php';
                             </div>
                         </div>
                         <div class="section">
-                            <h3>About Me</h3>
-                            <p>Energistically administrate 24/7 portals and enabled catalysts for change. Objectively revolutionize client-centered e-commerce via covalent scenarios. Continually envisioneer.</p>
-                        </div>
-                        <div class="section">
                             <h3>Statistics</h3>
                             <p><span class="badge">332</span> Following</p>
                             <p><span class="badge">124</span> Followers</p>
@@ -96,8 +92,11 @@ require 'auth.php';
                                         <div class="card-body">
                                             <?php
                                             require 'config.php';
-                                            $Tweet = $collection2->find();
+                                            $id = json_decode(json_encode($res->_id), true);
+                                            $Tweet = $collection2->find(["UserId" => $id['$oid']]);
                                             foreach ($Tweet as $tweets) {
+                                                echo '<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">';
+                                                echo "<h3>$tweets->UserTweet</h3>";
                                                 echo "<p>$tweets->Tweet</p>";
                                             }
                                             ?>
