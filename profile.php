@@ -17,12 +17,12 @@ $profile_id = $_GET['id'];
 $profileData = $collection1->findOne( array('_id' => new MongoDB\BSON\ObjectID("$profile_id")));
 
 function get_recent_tweets($db){
-    require_once('config.php');
-    $id = $_GET['id'];
-    $results = $collection2->find( array('authorId' => new MongoDB\BSON\ObjectID("$id")));
+    // require_once('config.php');
+    // $id = $_GET['id'];
+    // $results = $collection2->find( array('authorId' => new MongoDB\BSON\ObjectID("$id")));
     
-    $recent_tweets = iterator_to_array($results);
-    return $recent_tweets;
+    // $recent_tweets = iterator_to_array($results);
+    // return $recent_tweets;
 }
 
 if (isset($_POST['posting'])) {
@@ -123,22 +123,7 @@ if (isset($_POST['posting'])) {
                         
                     </div>
                 <br><br>
-                <div class="card">
-                    <div class="card-body">
-                        <?php
-                            $recent_tweets = get_recent_tweets($db);
-                            foreach ($recent_tweets as $tweet) {
-                                echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
-                                echo '<p>'.$tweet['tweet'].'</p>';
-                                echo '<p>'.$tweet['created'].'</p>';
-                                // echo "<h1>" . $user . "</h1>";
-                                // echo "<p>".$tweet['tweet']."</p>";
-                                // echo "<p>".$tweet['created']."</p>";
-                                echo '<hr>';
-                            }
-                        ?>
-                    </div>
-                </div>
+                
                         <div class="tab-content">
                             <!-- activities -->
                             <div class="tab-pane fade in active" id="activities">
@@ -146,6 +131,22 @@ if (isset($_POST['posting'])) {
                                     <a href="#" class="pull-left">
                                         <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">
                                     </a>
+                                    <!-- <div class="card">
+                                        <div class="card-body">
+                                            <?php
+                                                $recent_tweets = get_recent_tweets($db);
+                                                foreach ($recent_tweets as $tweet) {
+                                                    // echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
+                                                    // echo '<p>'.$tweet['tweet'].'</p>';
+                                                    // echo '<p>'.$tweet['created'].'</p>';
+                                                    echo "<h1>" . $user . "</h1>";
+                                                    echo "<p>".$tweet['tweet']."</p>";
+                                                    echo "<p>".$tweet['created']."</p>";
+                                                    echo '<hr>';
+                                                }
+                                            ?>
+                                        </div>
+                                    </div> -->
                                     <div class="media-body">
                                         <div class="card-body">
                                             <?php
