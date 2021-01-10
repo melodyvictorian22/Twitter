@@ -126,7 +126,7 @@ if (isset($_POST['posting'])) {
                 <br><br>
                 
 
-                <!-- <div class="card">
+                <div class="card">
                     <div class="card-body">
                         <form action="" method="POST">
                             <div class="form-group">
@@ -150,9 +150,9 @@ if (isset($_POST['posting'])) {
                             </div>
                         </form>
                     </div>
-                </div> -->
+                </div>
 
-                <div>
+                <!-- <div>
                     <p><b>Tweets dari following kamu!</b></p>
                     <?php
                         $recent_tweets = get_recent_tweets($db);
@@ -163,7 +163,7 @@ if (isset($_POST['posting'])) {
                             echo '<hr>';
                         }
                     ?>
-                </div>
+                </div> -->
             </div>
 
         </div>

@@ -6,15 +6,16 @@ if(!isset($_POST['tweet'])){
 }
 
 $user_id = $_SESSION['AkunSedangLogin'];
-$userData = $collection1->findOne( array('_id'=>$user_id));
-$tweet = substr($_POST['tweet'], 140);
+$userData = $db->cl_account->findOne( array('_id'=>$user_id));
+$tweet = substr($_POST['tweet'], 0, 140);
 $date = date('Y-m-d H:i:s');
 
-$collection2->insertOne( array(
+$db->cl_tweet->insertOne( array(
     'authorId' => $user_id,
     'authorName' => $userData['NamaPengguna'],
     'tweet' => $tweet,
-    'created' => date
+    'created' => $date
 ));
 
 header('Location:timeline.php');
+?>

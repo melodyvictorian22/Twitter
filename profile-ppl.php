@@ -10,14 +10,17 @@ require 'auth.php';
 
 $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
 
-require 'config.php';
 if(isset($_POST['follow'])){
-    $idUser = json_decode(json_encode($resLogin->_id), true);
-    $idFollow = json_decode(json_encode($res->_id), true);
-    $insert = $collection3->insertOne([
-        "UserId" => $idUser['$oid'],
-        "Following" => $idFollow['$oid']
-    ]);
+    require_once('config.php');
+    $user_id = $_GET['id'];
+    $follower_id = $_SESSION['AkunSedangLogin'];
+
+    $collection3->insertOne( array(
+        'UserId' => new MongoDB\BSON\ObjectID("$user_id"),
+        'Follower' => new MongoDB\BSON\ObjectID("$follower_id")
+    ));
+
+    header("Location: search.php");
 }
 
 ?>
@@ -72,6 +75,7 @@ if(isset($_POST['follow'])){
                         </div>
                         <br>
                         <div class="action-buttons">
+                            <!-- <a href='follow.php' class="btn btn-success btn-block">Follow</a> -->
                             <input type="button" class="btn btn-success btn-block" value="Follow" name="follow">
                         </div>
                     </div>
