@@ -78,10 +78,10 @@ $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
                         <div class="action-buttons">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="#" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Edit Profile</a>
+                                    <a href="edit.php" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Edit Profile</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="#" class="btn btn-danger btn-block"><i class="fa fa-android-mail"></i> Delete Account</a>
+                                    <a href="delete.php" class="btn btn-danger btn-block"><i class="fa fa-android-mail"></i> Delete Account</a>
                                 </div>
                             </div>
                         </div>
@@ -104,23 +104,7 @@ $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
                     <div class="card">
                         
                     </div>
-                <br><br>
-                <div class="card">
-                    <div class="card-body">
-                        <?php
-                            // $recent_tweets = get_recent_tweets($db);
-                            // foreach ($recent_tweets as $tweet) {
-                            //     echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
-                            //     echo '<p>'.$tweet['tweet'].'</p>';
-                            //     echo '<p>'.$tweet['created'].'</p>';
-                            //     // echo "<h1>" . $user . "</h1>";
-                            //     // echo "<p>".$tweet['tweet']."</p>";
-                            //     // echo "<p>".$tweet['created']."</p>";
-                            //     echo '<hr>';
-                            // }
-                        ?>
-                    </div>
-                </div>
+                
                         <div class="tab-content">
                             <!-- activities -->
                             <div class="tab-pane fade in active" id="activities">
@@ -128,6 +112,22 @@ $userData = $collection1->findOne( array('_id'=> $_SESSION['AkunSedangLogin']));
                                     <a href="#" class="pull-left">
                                         <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">
                                     </a>
+                                    <!-- <div class="card">
+                                        <div class="card-body">
+                                            <?php
+                                                $recent_tweets = get_recent_tweets($db);
+                                                foreach ($recent_tweets as $tweet) {
+                                                    // echo '<p><a href="profile.php?id='.$tweet['authorId'].'">'.$tweet['authorName'].'</a></p>';
+                                                    // echo '<p>'.$tweet['tweet'].'</p>';
+                                                    // echo '<p>'.$tweet['created'].'</p>';
+                                                    echo "<h1>" . $user . "</h1>";
+                                                    echo "<p>".$tweet['tweet']."</p>";
+                                                    echo "<p>".$tweet['created']."</p>";
+                                                    echo '<hr>';
+                                                }
+                                            ?>
+                                        </div>
+                                    </div> -->
                                     <div class="media-body">
                                         <div class="card-body">
                                             <?php

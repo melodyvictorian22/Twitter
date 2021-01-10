@@ -44,7 +44,7 @@ if(isset($_POST['follow'])){
     <div class="logo">Twitter</div>
     <div class="nav-items">
         <li><a href="timeline.php">Home</a></li>
-        <li><a href="profile.php">Profile</a></li>
+        <li><a href="profile.php?id=<?php echo $_SESSION['AkunSedangLogin']; ?>">Profile</a></li>
         <li><a href="search.php">Search</a></li>
     </div>
     <div class="search-icon"><span class="fas fa-search"></span></div>
@@ -84,6 +84,10 @@ if(isset($_POST['follow'])){
                         <div class="tab-content">
                             <!-- activities -->
                             <div class="tab-pane fade in active" id="activities">
+                                <div class="media activity-item">
+                                    <!-- <a href="#" class="pull-left">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">
+                                    </a> -->
                                     <div class="media-body">
                                         <div class="card-body">
                                             <?php
@@ -92,7 +96,7 @@ if(isset($_POST['follow'])){
                                             $Tweet = $collection2->find(["UserId" => $id['$oid']]);
                                             foreach ($Tweet as $tweets) {
                                                 echo '<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="media-object avatar">';
-                                                echo "<h3>$tweets->UserTweet</h3>";
+                                                echo "<h4>$tweets->UserTweet</h4>";
                                                 echo "<p>$tweets->Tweet</p>";
                                             }
                                             ?>
