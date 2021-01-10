@@ -122,7 +122,6 @@ if (isset($_POST['posting'])) {
                     <div class="card">
                         
                     </div>
-                <br><br>
                 
                         <div class="tab-content">
                             <!-- activities -->
