@@ -69,10 +69,10 @@
                         <div class="action-buttons">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <a href="#" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Edit Profile</a>
+                                    <a href="edit.php" class="btn btn-success btn-block"><i class="fa fa-plus-round"></i> Edit Profile</a>
                                 </div>
                                 <div class="col-xs-6">
-                                    <a href="#" class="btn btn-danger btn-block"><i class="fa fa-android-mail"></i> Delete Account</a>
+                                    <a href="delete.php" class="btn btn-danger btn-block"><i class="fa fa-android-mail"></i> Delete Account</a>
                                 </div>
                             </div>
                         </div>
