@@ -61,7 +61,7 @@
 
                     <div class="card">
                         <div class="card-body text-center">
-                            <p><a href="#">My Profile</a></p>
+                            <p><a href="profile.php">My Profile</a></p>
                             <img class="img img-responsive rounded-circle mb-3" width="160" src="img/default.svg ?>" />
                             
                             <?php
