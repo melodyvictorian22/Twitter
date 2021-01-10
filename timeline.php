@@ -62,7 +62,7 @@ if (isset($_POST['posting'])) {
     <div class="nav-items">
         <li><a href="#">Home</a></li>
         <li><a href="profile.php?id=<?php echo $_SESSION['AkunSedangLogin']; ?>">Profile</a></li>
-        <li><a href="userList.php">Explore</a></li>
+        
         <li><a href="#">Contact</a></li>
         <li><a href="#">Feedback</a></li>
     </div>
