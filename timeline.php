@@ -99,17 +99,16 @@ if (isset($_POST['posting'])) {
             </div>
 
 
-                <div class="col-md-8">
-                    <div class = "card">
-                        <div class="card-body">
-                            <form action="" method="POST">
-                                <div class="form-group">
-                                    <label for="Tweet">Tweet :</label>
-                                    <textarea type="text" name="Tweet" class="form-control" required="" placeholder="Apa yang sedang terjadi?"></textarea>
-                                </div>
-                                <input type="submit" class="btn btn-primary" value="Tweet" name="posting">
-                            </form>
-                        </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="Tweet">Tweet :</label>
+                                <textarea type="text" name="Tweet" class="form-control" required="" placeholder="Apa yang sedang terjadi?"></textarea>
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Tweet" name="posting">
+                        </form>
                     </div>
                 </div>
                 <br><br>
