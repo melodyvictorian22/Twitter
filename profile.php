@@ -20,7 +20,7 @@ function get_recent_tweets($db){
     require_once('config.php');
     $id = $_GET['id'];
     $results = $collection2->find( array('authorId' => new MongoDB\BSON\ObjectID("$id")));
-    var_dump($id);
+    
     $recent_tweets = iterator_to_array($results);
     return $recent_tweets;
 }
@@ -118,7 +118,7 @@ if (isset($_POST['posting'])) {
                             <li><a href="#followers" data-toggle="tab">FOLLOWERS</a></li>
                             <li><a href="#following" data-toggle="tab">FOLLOWING</a></li>
                         </ul>
-                <!-- <div class="col-md-8">
+                <div class="col-md-8">
                     <div class="card">
                         
                     </div>
@@ -138,7 +138,7 @@ if (isset($_POST['posting'])) {
                             }
                         ?>
                     </div>
-                </div> -->
+                </div>
                         <div class="tab-content">
                             <!-- activities -->
                             <div class="tab-pane fade in active" id="activities">
