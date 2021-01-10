@@ -1,5 +1,5 @@
-/* Reset */
-html {
+
+/* html {
     color: rgb(119, 119, 119);
     font-family: 'Open Sans', Arial;
 }
@@ -30,10 +30,10 @@ a:focus,
 a:active,
 button:focus {
     outline: 0;
-}
+} */
 
 /* Defaults */
-a {
+/* a {
     color: rgb(46, 154, 194);
     text-decoration: none;
 }
@@ -44,54 +44,43 @@ button {
     border: none;
     color: rgb(255, 255, 255);
     padding: 5px 15px;
-}
+} */
 
 /* Compose */
-.compose > div {
+/* .compose > div {
     margin-top: 10px;
     text-align: right;
     display: none;
 }
 
-.compose textarea {
-    border-radius: 3px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(192, 225, 237);
-    display: block;
-    width: 100%;
-    padding: 4px;
-    resize: none;
-    height: 1.8em;
-}
-
 .compose textarea:focus {
     outline: none;
-}
+} */
 
 /* Active State */
-.compose.expand textarea {
+/* .compose.expand textarea {
     height: 5em;
-}
+} */
 
-.compose.expand > div {
+/* .compose.expand > div {
     display: block;
-}
+} */
 
 /* Tweets */
-.tweet {
+/* .tweet {
     overflow: hidden;
-}
+} */
 
-.tweet > img {
+/* .tweet > img {
     display: block;
     float: left;
     width: 60px;
     height: 60px;
     background-color: rgb(238, 238, 238);
     border-radius: 4px;
-}
+} */
 
-.tweet .body {
+/* .tweet .body {
     margin-left: 60px;
     padding-left: 10px;
 }
@@ -103,14 +92,12 @@ button {
 
 .tweet .message {
     margin-top: 10px;
-}
+} */
 
 /* Structure */
-body {
-    background: rgb(192, 222, 237) url('../images/bg.png') repeat-x;
-}
 
-main {
+
+/* main {
     width: 600px;
     margin: 0 auto;
 }
@@ -129,10 +116,10 @@ header {
     border: 1px solid rgb(192, 225, 237);
     border-radius: 10px;
     overflow: hidden;
-}
+} */
 
 /* Thread and Replies */
-.thread {
+/* .thread {
     border-bottom: 1px solid rgb(225, 232, 237);
 }
 
@@ -153,9 +140,9 @@ header {
 
 .thread.expand .replies {
     display: block;
-}
+} */
 
 /* Custom CSS */
-.expand {
+/* .expand {
     display: initial;
-}
+} */

@@ -4,6 +4,7 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    
 }
 
 /*------------------------------------------------*/
@@ -379,8 +380,4 @@ body {
 .nav-pills-custom-minimal.custom-minimal-bottom>li.active>a:hover,
 .nav-pills-custom-minimal.custom-minimal-bottom>li.active>a:focus {
     border-bottom-color: #94c632;
-}
-
-.tab-content{
-    background-color: white;
 }

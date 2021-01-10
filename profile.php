@@ -5,40 +5,13 @@
     <meta charset="utf-8">
     <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>Profile Activities Followers Following - Bootdey.com</title>
+    <title>Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-   
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/Dark-NavBar.css">
- 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    
-    <link rel="stylesheet" href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
-    <style type="text/css">
-
-    </style>
 </head>
 
 <body>
-    <div>
-        <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button" style="height:80px;background-color:#37434d;color:#ffffff;">
-            <div class="container-fluid"><a class="navbar-brand" href="timeline.php" style="color: #8ec1da" ;"><i class="fab fa-twitter"></i>&nbsp;Twitter</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" style="color: #ffffff;" href="timeline.php"><i class="fa fa-home"></i>&nbsp;Home</a></li>
-                        <li class="nav-item"><a class="nav-link" style="color: #ffffff;" href="#"><i class="fa fa-search"></i>&nbsp;Search</a></li>
-                        <li class="nav-item"><a class="nav-link" style="color:#ffffff;" href="profile.php"><i class="fa fa-user-circle-o"></i>&nbsp;Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" style="color:#ffffff;" href="login.php"><i class="fa fa-sign-out"></i>&nbsp;Sign Out</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container">
         <div class="user-profile">
