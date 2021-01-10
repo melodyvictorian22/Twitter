@@ -55,23 +55,17 @@ if (isset($_POST['posting'])) {
     </style>
 </head>
 <nav>
-    <div class="menu-icon"><span class="fas fa-bars"></span></div>
+<div class="menu-icon"><span class="fas fa-bars"></span></div>
     <div class="logo">Twitter</div>
     <div class="nav-items">
-        <li><a href="#">Home</a></li>
+        <li><a href="timeline.php">Home</a></li>
         <li><a href="profile.php">Profile</a></li>
-        <li><a href="#">Blogs</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Feedback</a></li>
+        <li><a href="search.php">Search</a></li>
     </div>
     <div class="search-icon"><span class="fas fa-search"></span></div>
     <div class="cancel-icon"><span class="fas fa-times"></span></div>
-    <form action="#">
-        <input type="search" class="search-data" placeholder="Search" required>
-        <button type="submit" class="fas fa-search"></button>
-    </form>
     <div class="nav-items2">
-        <li><a href="#">Logout</a></li>
+        <li><a href="logout.php">Logout</a></li>
     </div>
 </nav>
 
