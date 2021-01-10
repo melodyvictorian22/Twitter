@@ -70,10 +70,14 @@
                                     if(isset($_POST["search"])){
                                         require_once("config.php");
                                         $searchUser = $_POST["searchUser"];
+                                        $_SESSION["akunCari"] = $searchUser;
                                         if($collection1){
                                             $find = $collection1->findOne(["NamaPengguna" => $searchUser]);
+                                            
+                                            $test = json_encode($find);
+                                            $_SESSION["resultCari"] = $test;
                                             if(!empty($find)){
-                                                echo "<h2><a href='profile.php'>".$find->Nama."</a></h2>";
+                                                echo "<h2><a href='profile-ppl.php'>".$find->Nama."</a></h2>";
                                                 echo "<h3>$find->NamaPengguna</h3>";
                                             }
                                             else{

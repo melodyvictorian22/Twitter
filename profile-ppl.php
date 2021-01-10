@@ -1,24 +1,8 @@
 <?php session_start();
-$user = $_SESSION["AkunLogin"];
-$testResult = $_SESSION["result"];
-$result = json_decode($testResult);
+$user = $_SESSION["akunCari"];
+$testResult = $_SESSION["resultCari"];
+$res = json_decode($testResult);
 require 'auth.php';
-
-
-
-if (isset($_POST['posting'])) {
-    require_once("config.php");
-
-    $res2 = json_decode(json_encode($result->_id), true);
-    $insertOneResult = $collection2->insertOne([
-        'Tweet' => $_POST['Tweet'],
-        'UserId' => $res2['$oid']
-    ]);
-
-    // echo $res2['$oid'];
-
-    header("Location: timeline.php");
-}
 
 ?>
 
@@ -66,7 +50,7 @@ if (isset($_POST['posting'])) {
                             <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" class="avatar img-circle">
                             <h2> <?php
                                     echo "<h1>" . $user . "</h1>";
-                                    echo $result->Email;
+                                    echo $res->Email;
                                     ?>
                             </h2>
                         </div>
