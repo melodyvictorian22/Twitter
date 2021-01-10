@@ -35,7 +35,6 @@ if (isset($_POST['posting'])) {
     <title>Twitter Timeline</title>
     <link rel="stylesheet" href="./vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <style>
         body {
@@ -60,11 +59,9 @@ if (isset($_POST['posting'])) {
 <div class="menu-icon"><span class="fas fa-bars"></span></div>
     <div class="logo">Twitter</div>
     <div class="nav-items">
-        <li><a href="#">Home</a></li>
+        <li><a href="timeline.php">Home</a></li>
         <li><a href="profile.php?id=<?php echo $_SESSION['AkunSedangLogin']; ?>">Profile</a></li>
-        
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Feedback</a></li>
+        <li><a href="search.php">Search</a></li>
     </div>
     <div class="search-icon"><span class="fas fa-search"></span></div>
     <div class="cancel-icon"><span class="fas fa-times"></span></div>
@@ -106,7 +103,7 @@ if (isset($_POST['posting'])) {
                 <div class="card">
                     <div class="card-body ">
                         
-                            <form action="" method="POST">
+                            <form action="createTweet.php" method="POST">
                                 <div class="form-group">
                                     <label for="Tweet">Tweet :</label>
                                     <textarea type="text" name="Tweet" class="form-control" required="" placeholder="Apa yang sedang terjadi?"></textarea>

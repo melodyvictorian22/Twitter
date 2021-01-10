@@ -36,7 +36,7 @@
     <div class="logo">Twitter</div>
     <div class="nav-items">
         <li><a href="timeline.php">Home</a></li>
-        <li><a href="profile.php">Profile</a></li>
+        <li><a href="profile.php?id=<?php echo $_SESSION['AkunSedangLogin']; ?>">Profile</a></li>
         <li><a href="search.php">Search</a></li>
     </div>
     <div class="search-icon"><span class="fas fa-search"></span></div>
