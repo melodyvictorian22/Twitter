@@ -90,8 +90,6 @@ $userData = $collection1->findOne(array('_id' => $_SESSION['AkunSedangLogin']));
                     <div class="profile-info-right">
                         <ul class="nav nav-pills nav-pills-custom-minimal custom-minimal-bottom">
                             <li class="active"><a href="#activities" data-toggle="tab">ACTIVITIES</a></li>
-                            <li><a href="#followers" data-toggle="tab">FOLLOWERS</a></li>
-                            <li><a href="#following" data-toggle="tab">FOLLOWING</a></li>
                         </ul>
                         <div class="col-md-8">
                             <div class="card">
